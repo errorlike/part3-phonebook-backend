@@ -1,6 +1,6 @@
 const { request } = require('express');
 const express = require('express');
-const morgan = require('morgan')
+const morgan = require('morgan');
 const app = express();
 app.use(express.json());
 let persons = [
@@ -29,7 +29,7 @@ const generateId = () => {
     const maxId = Math.floor(Math.random() * 10000);
     return maxId;
 };
-app.use(morgan("tiny"))
+app.use(morgan("tiny"));
 app.get("/api/persons", (request, response) => {
     response.json(persons);
 });
@@ -71,7 +71,7 @@ app.post("/api/persons", (request, response) => {
         name,
         number: body.number,
     };
-      persons = persons.concat(person);
+    persons = persons.concat(person);
     console.log(persons);
     response.json(person);
 });
