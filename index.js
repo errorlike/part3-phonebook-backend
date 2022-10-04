@@ -1,4 +1,4 @@
-require("dotenv").config();
+require('dotenv').config();
 const Person = require('./models/person');
 const cors = require('cors');
 const express = require('express');
@@ -8,9 +8,9 @@ app.use(express.json());
 app.use(cors());
 app.use(express.static('build'));
 
-app.use(morgan("tiny"));
+app.use(morgan('tiny'));
 
-app.get("/api/persons", (request, response, next) => {
+app.get('/api/persons', (request, response, next) => {
     Person.find({})
         .then((persons => {
             response.json(persons);
@@ -28,7 +28,7 @@ app.get('/api/persons/:id', (request, response, next) => {
         })
         .catch(error => next(error));
 });
-app.delete("/api/persons/:id", (request, response, next) => {
+app.delete('/api/persons/:id', (request, response, next) => {
     const id = request.params.id;
     console.log(id);
     Person
@@ -42,7 +42,7 @@ app.delete("/api/persons/:id", (request, response, next) => {
 //     const date = new Date();
 //     response.send(`Phonebook has info for ${persons.length} persons<br> ${date}`);
 // });
-app.post("/api/persons", (request, response, next) => {
+app.post('/api/persons', (request, response, next) => {
     const body = request.body;
     const name = body.name;
     const number = body.number;
